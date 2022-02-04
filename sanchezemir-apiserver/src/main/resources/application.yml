@@ -1,0 +1,21 @@
+server:
+  port: 8095
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: sanchezemir-cliente
+        uri: http://localhost:8080
+        predicates:
+        - Path=/api/cliente/**
+      - id: sanchezemir-pizza
+        uri: http://localhost:8081
+        predicates:
+        - Path=/api/pizza/**
+      - id: sanchezemir-pizzeria
+        uri: http://localhost:8082
+        predicates:
+        - Path=/api/pizzeria/**
+  application:
+    name: sanchezemir-apiserver
